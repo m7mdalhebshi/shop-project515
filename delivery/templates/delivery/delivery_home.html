@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align: center;">
+    <h2>مرحباً بك في صفحة الموصلين</h2>
+    <a href="{% url 'delivery_list' %}">عرض قائمة الموصلين</a>
+    <br><br>
+    {% if user.is_authenticated %}
+    <a href="{% url 'delivery_create' %}">إضافة موصل جديد</a>
+    {% else %}
+    <p>سجل دخولك للتحكم بالبيانات</p>
+    <a href="{% url 'login' %}">تسجيل دخول</a>
+    {% endif %}
+</div>
+{% endblock %}

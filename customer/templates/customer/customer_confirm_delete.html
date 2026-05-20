@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تأكيد الحذف</title>
+</head>
+<body style="text-align: center;">
+    <h1>تأكيد الحذف</h1>
+    <div>
+        <p>هل أنت متأكد أنك تريد حذف العميل <strong>"{{ customer.name }}"</strong>؟</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">نعم، احذف العميل</button>
+        </form>
+    </div>
+    <br>
+    <a href="{% url 'customer_list' %}">إلغاء والعودة للقائمة</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تفاصيل العميل</title>
+</head>
+<body style="text-align: center;">
+    <h1>تفاصيل العميل</h1>
+    <div>
+        <p><strong>الاسم:</strong> {{ customer.name }}</p>
+        <p><strong>الإيميل:</strong> {{ customer.email }}</p>
+        <p><strong>رقم الهاتف:</strong> {{ customer.phone }}</p>
+        <p><strong>العنوان:</strong> {{ customer.address }}</p>
+    </div>
+    <br>
+    <a href="{% url 'customer_list' %}">عودة للقائمة</a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}تسجيل الدخول{% endblock %}
+
+{% block content %}
+<div style="text-align: center;">
+    <h2>تسجيل الدخول</h2>
+
+    {% if form.errors %}
+    <p style="color: red;">اسم المستخدم أو كلمة المرور غير صحيحة.</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">دخول</button>
+    </form>
+
+    <br>
+    <div>
+        ليس لديك حساب؟ <a href="{% url 'signup' %}">إنشاء حساب جديد</a>
+    </div>
+</div>
+{% endblock %}

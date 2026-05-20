@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align: center;">
+    <h2>{% if form.instance.pk %}تعديل بيانات الموصل{% else %}إضافة موصل{% endif %}</h2>
+    <form method="post" style="display: inline-block; text-align: left;">
+        {% csrf_token %}
+        {% for field in form %}
+        <p>
+            <label for="{{ field.id_for_label }}" style="text-align: left; display: block;">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+            <span style="color: red;">{{ field.errors }}</span>
+            {% endif %}
+        </p>
+        {% endfor %}
+        <button type="submit">حفظ</button>
+    </form>
+    <br><br>
+    <a href="{% url 'delivery_list' %}">إلغاء</a>
+</div>
+{% endblock %}

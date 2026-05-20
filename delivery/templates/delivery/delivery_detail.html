@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align: center;">
+    <h2>تفاصيل الموصل</h2>
+    <p><strong>الاسم:</strong> {{ driver.name }}</p>
+    <p><strong>العمر:</strong> {{ driver.age }}</p>
+    <p><strong>الإيميل:</strong> {{ driver.email }}</p>
+    <p><strong>الرقم:</strong> {{ driver.phone }}</p>
+    <br>
+    <a href="{% url 'delivery_list' %}">العودة للقائمة</a>
+</div>
+{% endblock %}

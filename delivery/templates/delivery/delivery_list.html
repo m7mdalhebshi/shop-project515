@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align: center;">
+    <h2>قائمة الموصلين</h2>
+    {% if user.is_authenticated %}
+    <a href="{% url 'delivery_create' %}">إضافة موصل جديد</a>
+    {% endif %}
+    <br><br>
+    <table border="1" style="margin: auto; width: 80%; text-align: center; border-collapse: collapse;">
+        <tr>
+            <th>الاسم</th>
+            <th>العمر</th>
+            <th>الإيميل</th>
+            <th>الرقم</th>
+            {% if user.is_authenticated %}
+            <th>الإجراءات</th>
+            {% endif %}
+        </tr>
+        {% for driver in drivers %}
+        <tr>
+            <td>{{ driver.name }}</td>
+            <td>{{ driver.age }}</td>
+            <td>{{ driver.email }}</td>
+            <td>{{ driver.phone }}</td>
+            {% if user.is_authenticated %}
+            <td>
+                <a href="{% url 'delivery_detail' driver.pk %}">التفاصيل</a> |
+                <a href="{% url 'delivery_update' driver.pk %}">تعديل</a> |
+                <a href="{% url 'delivery_delete' driver.pk %}">حذف</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="{% if user.is_authenticated %}5{% else %}4{% endif %}">لا يوجد موصلين حالياً.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
